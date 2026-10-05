@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>Untuk Tayangg 💗</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(circle at top,#351b2b,#100a11 55%);
+    color:white;
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+}
+
+button{
+    font-family:Arial,sans-serif;
+    touch-action:manipulation;
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+button:active{
+    transform:scale(.94);
+}
+
+.app{
+    width:94%;
+    max-width:620px;
+    margin:auto;
+    padding:25px 0 60px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.badge{
+    display:inline-block;
+    background:#e6387b;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.header h1{
+    font-size:36px;
+    margin:13px 0 5px;
+}
+
+.gray{
+    color:#aaa0aa;
+}
+
+.card{
+    background:rgba(32,20,31,.96);
+    border:1px solid #412d3d;
+    border-radius:24px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.chat{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.bubble{
+    max-width:88%;
+    background:#302330;
+    padding:13px 15px;
+    border-radius:18px;
+    line-height:1.5;
+}
+
+.bubble.right{
+    align-self:flex-end;
+    background:#d93678;
+}
+
+.choice{
+    width:100%;
+    border:0;
+    background:#d93678;
+    color:white;
+    padding:14px;
+    border-radius:15px;
+    margin:5px 0;
+    font-size:15px;
+    font-weight:bold;
+}
+
+#answer{
+    display:none;
+    background:#302330;
+    color:#ffd7e7;
+    padding:13px;
+    border-radius:14px;
+    margin-top:10px;
+    line-height:1.5;
+}
+
+/* GAME */
+
+.game-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.restart{
+    border:0;
+    background:#493342;
+    color:white;
+    padding:10px 12px;
+    border-radius:12px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+    margin:15px 0;
+}
+
+.stat{
+    background:#302330;
+    border-radius:13px;
+    padding:9px 4px;
+    text-align:center;
+}
+
+.stat span{
+    display:block;
+    color:#a99da7;
+    font-size:9px;
+}
+
+.stat b{
+    display:block;
+    font-size:16px;
+    margin-top:4px;
+}
+
+.screen{
+    display:none;
+}
+
+.screen.show{
+    display:block;
+}
+
+.start{
+    text-align:center;
+}
+
+.start-icon{
+    font-size:75px;
+}
+
+.main-button{
+    width:100%;
+    border:0;
+    border-radius:15px;
+    padding:16px;
+    background:#df3979;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+}
+
+/* CUSTOMER */
+
+.customer{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#302330;
+    border-radius:17px;
+    padding:12px;
+    margin-bottom:12px;
+}
+
+.customer-face{
+    font-size:42px;
+}
+
+.customer-info{
+    flex:1;
+}
+
+.customer-info strong{
+    display:block;
+}
+
+.mood{
+    margin-top:5px;
+    font-size:13px;
+    color:#ffc3d8;
+}
+
+.order{
+    background:#241824;
+    border:1px solid #493342;
+    padding:15px;
+    border-radius:17px;
+}
+
+.order small{
+    color:#ff77a5;
+}
+
+.order strong{
+    display:block;
+    font-size:21px;
+    margin:5px 0;
+}
+
+.order div{
+    color:#c8bdc6;
+    font-size:13px;
+}
+
+.progress{
+    height:9px;
+    background:#3b2b39;
+    border-radius:20px;
+    overflow:hidden;
+    margin:12px 0;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:#e63d7d;
+    transition:.3s;
+}
+
+.message{
+    text-align:center;
+    min-height:26px;
+    margin:10px 0;
+    color:#ffd2e2;
+    font-weight:bold;
+}
+
+/* PAN */
+
+.pan{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    background:#151015;
+    border:2px solid #493342;
+    padding:14px;
+    border-radius:23px;
+}
+
+.hole{
+    width:100%;
+    aspect-ratio:1;
+    border-radius:50%;
+    border:5px solid #493342;
+    background:#090709;
+    color:#777;
+    font-size:29px;
+    padding:0;
+}
+
+.hole.adonan{
+    background:#e8ca9b;
+    border-color:#b88958;
+}
+
+.hole.masak{
+    background:#ae5d31;
+    border-color:#df9158;
+    animation:heat .6s infinite alternate;
+}
+
+.hole.matang{
+    background:#eca04c;
+    border-color:#ffd08b;
+}
+
+.hole.selesai{
+    background:#d98337;
+    border-color:#ffbd6d;
+}
+
+.hole.gosong{
+    background:#17100d;
+    border-color:#0a0705;
+}
+
+@keyframes heat{
+    from{transform:scale(.97)}
+    to{transform:scale(1.03)}
+}
+
+/* CONTROLS */
+
+.controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:12px;
+}
+
+.control{
+    border:0;
+    background:#493342;
+    color:white;
+    padding:14px;
+    border-radius:14px;
+    font-weight:bold;
+}
+
+.control.pink{
+    background:#d93678;
+}
+
+.toppings{
+    margin-top:15px;
+}
+
+.topping-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:8px;
+}
+
+.topping{
+    border:2px solid #493342;
+    background:#302330;
+    color:white;
+    padding:10px 12px;
+    border-radius:20px;
+}
+
+.topping.selected{
+    background:#d93678;
+    border-color:#ff80ab;
+}
+
+.serve{
+    width:100%;
+    border:0;
+    background:#ef4b8b;
+    color:white;
+    padding:16px;
+    border-radius:15px;
+    margin-top:13px;
+    font-weight:bold;
+    font-size:16px;
+}
+
+/* END */
+
+.end{
+    text-align:center;
+}
+
+.end-icon{
+    font-size:75px;
+}
+
+.secondary{
+    width:100%;
+    border:0;
+    background:#493342;
+    color:white;
+    padding:14px;
+    border-radius:14px;
+    margin-top:9px;
+    font-weight:bold;
+}
+
+.reward,
+.final{
+    display:none;
+    text-align:center;
+}
+
+.reward.show,
+.final.show{
+    display:block;
+}
+
+.reward-icon{
+    font-size:75px;
+}
+
+.final p{
+    line-height:1.7;
+    color:#d7cbd4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+    <span class="badge">💗 KHUSUS BUAT TAYANGGG</span>
+
+    <h1>Maaf yaa Tayangg</h1>
+
+    <p class="gray">
+        aku mau bujuk kamu pakai cara yang beda 😭
+    </p>
+
+</header>
+
+
+<!-- PESAN -->
+
+<section class="card">
+
+    <h2>💬 Pesan buat Tayangg</h2>
+
+    <div class="chat">
+
+        <div class="bubble">
+            sayangg maaf yaa kemarin ituu 🥺
+        </div>
+
+        <div class="bubble right">
+            bener-bener bukan akuu yangg gantii pp 😭
+        </div>
+
+        <div class="bubble">
+            kamu macii kesel kahhh?
+            cupcupcup Tayangg 🥺
+        </div>
+
+        <div class="bubble right">
+            nantii akuu beyiinn esklimm dehhh 🍦
+        </div>
+
+        <div class="bubble">
+            btw mauu balikinn fotonya endaaa? 😭💗
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RESPONSE -->
+
+<section class="card">
+
+    <h2>🥺 Tayangg masih kesel?</h2>
+
+    <button class="choice" onclick="jawab(1)">
+        Masih kesel 😤
+    </button>
+
+    <button class="choice" onclick="jawab(2)">
+        Udah agak mendingan 🥺
+    </button>
+
+    <button class="choice" onclick="jawab(3)">
+        Udah nggak kesel 💗
+    </button>
+
+    <div id="answer"></div>
+
+</section>
+
+
+<!-- GAME -->
+
+<section class="card">
+
+    <div class="game-head">
+
+        <h2>🍳 Takoyaki Rush</h2>
+
+        <button
+            class="restart"
+            onclick="restartGame()">
+
+            🔄 RESTART
+
+        </button>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <span>ORDER</span>
+            <b id="orderCount">0/5</b>
+        </div>
+
+        <div class="stat">
+            <span>SKOR</span>
+            <b id="score">0</b>
+        </div>
+
+        <div class="stat">
+            <span>COMBO</span>
+            <b id="combo">x0</b>
+        </div>
+
+        <div class="stat">
+            <span>NYAWA</span>
+            <b id="life">❤️❤️❤️</b>
+        </div>
+
+    </div>
+
+
+    <!-- START -->
+
+    <div id="start" class="screen show start">
+
+        <div class="start-icon">
+            🍳
+        </div>
+
+        <h3>TAKOYAKI BUAT TAYANGGG</h3>
+
+        <p class="gray">
+            Selesaikan 5 pesanan.
+            Jangan sampai customer kecewa 😭
+        </p>
+
+        <button
+            class="main-button"
+            onclick="mulaiGame()">
+
+            MULAI MASAK 🍳
+
+        </button>
+
+    </div>
+
+
+    <!-- PLAY -->
+
+    <div id="play" class="screen">
+
+
+        <div class="customer">
+
+            <div class="customer-face" id="customerFace">
+                😊
+            </div>
+
+            <div class="customer-info">
+
+                <strong>
+                    Customer #<span id="customerNumber">1</span>
+                </strong>
+
+                <div class="mood" id="mood">
+                    Lagi seneng nunggu takoyaki 💗
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="order">
+
+            <small>PESANAN</small>
+
+            <strong id="orderName">
+                -
+            </strong>
+
+            <div id="orderTopping">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="progress">
+
+            <div
+                id="progressBar"
+                class="progress-bar">
+            </div>
+
+        </div>
+
+
+        <div
+            id="message"
+            class="message">
+
+            Tap lubang untuk menuang adonan.
+
+        </div>
+
+
+        <div id="pan" class="pan">
+        </div>
+
+
+        <div class="controls">
+
+            <button
+                class="control"
+                onclick="masak()">
+
+                🔥 MASAK
+
+            </button>
+
+            <button
+                class="control"
+                onclick="balik()">
+
+                🔄 BALIK
+
+            </button>
+
+        </div>
+
+
+        <div class="toppings">
+
+            <b>🍅 PILIH TOPPING</b>
+
+            <div
+                id="toppings"
+                class="topping-list">
+            </div>
+
+        </div>
+
+
+        <button
+            class="serve"
+            onclick="sajikan()">
+
+            🍽️ SAJIKAN
+
+        </button>
+
+
+    </div>
+
+
+    <!-- FINISH -->
+
+    <div id="finish" class="screen end">
+
+        <div id="endIcon" class="end-icon">
+            🎉
+        </div>
+
+        <h2 id="endTitle">
+            BERHASIL!
+        </h2>
+
+        <p id="endText">
+            -
+        </p>
+
+        <button
+            class="main-button"
+            onclick="restartGame()">
+
+            🔄 MAIN LAGI
+
+        </button>
+
+        <button
+            class="secondary"
+            onclick="ambilHadiah()">
+
+            🍦 AMBIL HADIAH
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- REWARD -->
+
+<section
+    id="reward"
+    class="card reward">
+
+    <div class="reward-icon">
+        🍦
+    </div>
+
+    <h2>ESKLIMMMM BUAT TAYANGGG!</h2>
+
+    <p class="gray">
+        janji tadi esklimnya jangan dilupain 😭
+    </p>
+
+    <button
+        class="main-button"
+        onclick="pesanAkhir()">
+
+        💗 LANJUT
+
+    </button>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section
+    id="final"
+    class="card final">
+
+    <h2>💗 Buat Tayangg</h2>
+
+    <p>
+
+        maaf yaa Tayangg kalau kemarin
+        bikin kamu salah paham atau bikin kamu kesel.
+        <br><br>
+
+        aku nggak bermaksud bikin kamu kepikiran.
+        semoga kita bisa baik-baik lagi yaa 🥺
+        <br><br>
+
+        makasii udah sampai di sini.
+        jangan kesel lama-lama yaa Tayangg 😭💗
+
+    </p>
+
+</section>
+
+
+<p
+    class="gray"
+    style="text-align:center;font-size:12px;">
+
+    dibuat dengan banyak usaha buat Tayangg 💗
+
+</p>
+
+</div>
+
+
+<script>
+
+/* ==========================================
+   DATA
+========================================== */
+
+const resep = [
+
+    {
+        nama:"Takoyaki Sosis",
+        jumlah:3,
+        topping:["saus","mayones"]
+    },
+
+    {
+        nama:"Takoyaki Bakso",
+        jumlah:4,
+        topping:["saus","daun bawang"]
+    },
+
+    {
+        nama:"Takoyaki Keju",
+        jumlah:3,
+        topping:["saus","mayones","keju"]
+    },
+
+    {
+        nama:"Takoyaki Komplit",
+        jumlah:5,
+        topping:["saus","mayones","daun bawang"]
+    }
+
+];
+
+
+let bermain = false;
+
+let order = 0;
+
+let score = 0;
+
+let combo = 0;
+
+let life = 3;
+
+let pesanan = null;
+
+let lubang = [];
+
+let topping = [];
+
+let cookingTimer = null;
+
+
+/* ==========================================
+   JAWAB
+========================================== */
+
+function jawab(n){
+
+    const box =
+        document.getElementById("answer");
+
+    box.style.display = "block";
+
+    if(n === 1){
+
+        box.innerText =
+        "iyaa aku ngerti Tayangg masih kesel 😭 aku nggak maksa kok. pelan-pelan yaa.";
+
+    }
+
+    if(n === 2){
+
+        box.innerText =
+        "hehe makasii Tayangg udah agak mendingan 🥺 sini aku bujuk duluu.";
+
+    }
+
+    if(n === 3){
+
+        box.innerText =
+        "YEAYYY 😭💗 makasii Tayangg, jangan kesel lagi yaaa.";
+
+    }
+
+}
+
+
+/* ==========================================
+   MULAI
+========================================== */
+
+function mulaiGame(){
+
+    clearInterval(cookingTimer);
+
+    bermain = true;
+
+    order = 0;
+
+    score = 0;
+
+    combo = 0;
+
+    life = 3;
+
+    document.getElementById("score").innerText = "0";
+
+    document.getElementById("combo").innerText = "x0";
+
+    updateLife();
+
+    document.getElementById("start")
+        .classList.remove("show");
+
+    document.getElementById("finish")
+        .classList.remove("show");
+
+    document.getElementById("play")
+        .classList.add("show");
+
+    buatPan();
+
+    pesananBaru();
+
+}
+
+
+/* ==========================================
+   RESTART
+========================================== */
+
+function restartGame(){
+
+    clearInterval(cookingTimer);
+
+    bermain = false;
+
+    document.getElementById("reward")
+        .classList.remove("show");
+
+    document.getElementById("final")
+        .classList.remove("show");
+
+    document.getElementById("finish")
+        .classList.remove("show");
+
+    document.getElementById("play")
+        .classList.remove("show");
+
+    document.getElementById("start")
+        .classList.add("show");
+
+    document.getElementById("orderCount")
+        .innerText = "0/5";
+
+    document.getElementById("score")
+        .innerText = "0";
+
+    document.getElementById("combo")
+        .innerText = "x0";
+
+    document.getElementById("life")
+        .innerText = "❤️❤️❤️";
+
+}
+
+
+/* ==========================================
+   PAN
+========================================== */
+
+function buatPan(){
+
+    const pan =
+        document.getElementById("pan");
+
+    pan.innerHTML = "";
+
+    lubang = [];
+
+    for(let i=0;i<6;i++){
+
+        lubang.push({
+            state:"kosong"
+        });
+
+        const btn =
+            document.createElement("button");
+
+        btn.type = "button";
+
+        btn.className = "hole";
+
+        btn.innerText = "○";
+
+        btn.onclick = function(){
+
+            klikLubang(i);
+
+        };
+
+        pan.appendChild(btn);
+
+    }
+
+}
+
+
+/* ==========================================
+   KLIK LUBANG
+========================================== */
+
+function klikLubang(i){
+
+    if(!bermain) return;
+
+    const slot = lubang[i];
+
+    if(slot.state === "kosong"){
+
+        slot.state = "adonan";
+
+        gambar(i);
+
+        pesan("🥣 Adonan masuk!");
+
+        return;
+
+    }
+
+    if(slot.state === "adonan"){
+
+        pesan("Tekan MASAK 🔥");
+
+        return;
+
+    }
+
+    if(slot.state === "masak"){
+
+        pesan("Tekan BALIK 🔄");
+
+        return;
+
+    }
+
+    if(slot.state === "matang"){
+
+        slot.state = "selesai";
+
+        gambar(i);
+
+        score += 10;
+
+        updateScore();
+
+        pesan("🐙 Takoyaki siap disajikan!");
+
+        return;
+
+    }
+
+    if(slot.state === "gosong"){
+
+        slot.state = "kosong";
+
+        gambar(i);
+
+        pesan("😭 Yang gosong dibuang.");
+
+        return;
+
+    }
+
+    pesan("Takoyaki ini sudah siap.");
+
+}
+
+
+/* ==========================================
+   GAMBAR
+========================================== */
+
+function gambar(i){
+
+    const btn =
+        document.getElementById("pan").children[i];
+
+    const state =
+        lubang[i].state;
+
+    btn.className = "hole";
+
+    if(state === "kosong"){
+
+        btn.innerText = "○";
+
+    }
+
+    if(state === "adonan"){
+
+        btn.classList.add("adonan");
+
+        btn.innerText = "🥣";
+
+    }
+
+    if(state === "masak"){
+
+        btn.classList.add("masak");
+
+        btn.innerText = "🟤";
+
+    }
+
+    if(state === "matang"){
+
+        btn.classList.add("matang");
+
+        btn.innerText = "🟠";
+
+    }
+
+    if(state === "selesai"){
+
+        btn.classList.add("selesai");
+
+        btn.innerText = "🐙";
+
+    }
+
+    if(state === "gosong"){
+
+        btn.classList.add("gosong");
+
+        btn.innerText = "💀";
+
+    }
+
+}
+
+
+/* ==========================================
+   MASAK
+========================================== */
+
+function masak(){
+
+    if(!bermain) return;
+
+    let found = false;
+
+    for(let i=0;i<lubang.length;i++){
+
+        if(lubang[i].state === "adonan"){
+
+            lubang[i].state = "masak";
+
+            gambar(i);
+
+            found = true;
+
+        }
+
+    }
+
+    if(found){
+
+        pesan("🔥 Takoyaki sedang dimasak!");
+
+        mulaiPanas();
+
+    }else{
+
+        pesan("🥣 Masukkan adonan dulu.");
+
+    }
+
+}
+
+
+/* ==========================================
+   SISTEM PANAS
+========================================== */
+
+function mulaiPanas(){
+
+    clearInterval(cookingTimer);
+
+    cookingTimer =
+        setInterval(function(){
+
+            if(!bermain){
+
+                clearInterval(cookingTimer);
+
+                return;
+
+            }
+
+            for(let i=0;i<lubang.length;i++){
+
+                if(lubang[i].state === "masak"){
+
+                    /*
+                    Setiap tick memberi sedikit
+                    kemungkinan matang otomatis.
+                    */
+
+                    if(Math.random() > .55){
+
+                        lubang[i].state = "matang";
+
+                        gambar(i);
+
+                    }
+
+                }
+
+            }
+
+        },1500);
+
+}
+
+
+/* ==========================================
+   BALIK
+========================================== */
+
+function balik(){
+
+    if(!bermain) return;
+
+    let found = false;
+
+    for(let i=0;i<lubang.length;i++){
+
+        if(lubang[i].state === "masak"){
+
+            lubang[i].state = "matang";
+
+            gambar(i);
+
+            found = true;
+
+        }
+
+    }
+
+    if(found){
+
+        pesan("🔄 PERFECT! Takoyaki matang!");
+
+    }else{
+
+        pesan("🔥 Belum ada takoyaki yang perlu dibalik.");
+
+    }
+
+}
+
+
+/* ==========================================
+   PESANAN BARU
+========================================== */
+
+function pesananBaru(){
+
+    order++;
+
+    if(order > 5){
+
+        menang();
+
+        return;
+
+    }
+
+    /*
+    Pesanan makin sulit.
+    */
+
+    let pilihan;
+
+    if(order === 1){
+
+        pilihan = resep[0];
+
+    }
+
+    else if(order === 2){
+
+        pilihan = resep[
+            Math.floor(Math.random()*2)
+        ];
+
+    }
+
+    else{
+
+        pilihan = resep[
+            Math.floor(Math.random()*resep.length)
+        ];
+
+    }
+
+    pesanan = pilihan;
+
+    topping = [];
+
+    document.getElementById("orderCount")
+        .innerText =
+        order + "/5";
+
+    document.getElementById("customerNumber")
+        .innerText = order;
+
+    document.getElementById("orderName")
+        .innerText =
+        pesanan.nama +
+        " x" +
+        pesanan.jumlah;
+
+    document.getElementById("orderTopping")
+        .innerText =
+        "Topping: " +
+        pesanan.topping.join(" + ");
+
+    document.getElementById("progressBar")
+        .style.width =
+        ((order-1)/5*100) + "%";
+
+    buatTopping();
+
+    ubahMood();
+
+    pesan(
+        "👨‍🍳 Pesanan baru masuk!"
+    );
+
+}
+
+
+/* ==========================================
+   CUSTOMER MOOD
+========================================== */
+
+function ubahMood(){
+
+    const face =
+        document.getElementById("customerFace");
+
+    const mood =
+        document.getElementById("mood");
+
+    if(combo >= 3){
+
+        face.innerText = "🤩";
+
+        mood.innerText =
+        "Wahhh masakannya enak banget!";
+
+    }
+
+    else if(combo === 2){
+
+        face.innerText = "😋";
+
+        mood.innerText =
+        "Customer mulai suka!";
+
